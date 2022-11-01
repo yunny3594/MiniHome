@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mini.mapper.ilchonMapper">
+
+	<select id="list" resultType="org.mini.model.ilchonVO">
+		select
+		ino,username,i.userid,ilchon,content,i.regdate
+		from ilchon i join member m on
+		m.userid=i.userid
+		order by ino desc;
+	</select>
+
+	<insert id="write">
+		insert into ilchon(userid,content)
+		values(#{userid},#{content})
+	</insert>
+
+	<delete id="delete">
+	delete from ilchon
+	where ino=#{ino}
+	</delete>
+
+</mapper>

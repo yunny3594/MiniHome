@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+.profile_1 {
+	
+}
+
+.profile_2 {
+	font-size: 13px;
+}
+
+.profile_image {
+	margin:5px;
+	width:95%;
+	border: 1px solid #e9e9e9;
+	border-radius: 10px;
+}
+
+/*프로필 드랍다운*/
+select {
+	width: 180px;
+	margin: 10px;
+	font-size: 18px;
+	text-align: center;
+	background-color: #c8f1ff;
+}
+
+.updated_news_title {
+	color: rgb(0,153,204);
+	border-bottom: 2px solid silver;
+	margin: 20px;
+}
+
+.miniroom_title {
+	color: rgb(0,153,204);
+	border-bottom: 2px solid silver;
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+.updated_news_contents {
+	margin: 0px 20px 5px 20px;
+	display: flex;
+	flex: 1;
+}
+
+.updated_news_left {
+	display: flex;
+	flex: 0.5;
+}
+
+.updated_news_right {
+	display: flex;
+	flex: 0.5;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table tr td {
+	border-width: 1px 0px 1px 0px;
+	border-style: dotted;
+	border-color: #c0c0c0;
+}
+
+.miniroom_contents {
+	margin: 0px 20px 5px 20px;
+}
+
+.miniroom_gif {
+	width: 95%;
+	margin: 10px 20px 10px 20px;
+}
+
+.friends_contents {
+	
+}
+
+.friends_write {
+	font-size: 20px;
+	color: rgb(0,153,204);
+	background-color: #ececec;
+	margin: 10px 20px 0px 20px;
+	padding: 10px;
+	height: 30px;
+}
+
+.friends_write input {
+	
+}

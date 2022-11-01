@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mini.mapper.DiaryMapper">
+
+	<insert id="write">
+		insert into diary(content)
+		value(#{content})
+	</insert>
+
+	<update id="modify">
+		update diary set content=#{content} where dno=#{dno}
+	</update>
+
+	<delete id="delete">
+		delete from diary where dno=#{dno}
+	</delete>
+
+	<select id="diary" resultType="org.mini.model.DiaryVO">
+		select * from(
+		select @rownum:=@rownum+1 rownum, d.* from diary d,
+		(select @rownum:=0) as tmp
+		order by dno desc )as diarylist
+      <![CDATA[
+      where rownum > (#{pageNum}-1)*1 and rownum <= #{pageNum}*1
+      ]]>
+	</select>
+
+	<select id="detail" resultType="org.mini.model.DiaryVO">
+		select * from diary where
+		dno=#{dno}
+	</select>
+	
+	<select id="total" resultType="int">
+		select count(*) from diary
+	</select>
+</mapper>

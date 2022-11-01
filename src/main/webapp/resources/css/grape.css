@@ -1,0 +1,25 @@
+@charset "UTF-8";
+.grape1{
+
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border-color: #8041D9;
+}
+.grape2{
+
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background-color: #A566FF;
+}
+.grape3{
+
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background-color: #7536CF;
+}
+button:hover{
+	background-color: #400080;
+}
