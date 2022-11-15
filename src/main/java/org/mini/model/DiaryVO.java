@@ -5,8 +5,10 @@ import java.util.Date;
 public class DiaryVO {
 	
 	private int dno;
+
 	private String content;
 	private Date regdate;
+
 
 	public int getDno() {
 		return dno;

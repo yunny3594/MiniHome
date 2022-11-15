@@ -33,14 +33,14 @@ public class PhotoController {
 		model.addAttribute("attach", ps.attachlist2(photo.getBno()));
 		model.addAttribute("folder", ps.photo_folder());
 
-		return "photo";
+		return "/photo/photo";
 	}
 
 	// 사진첩 글쓰기
 	@RequestMapping(value = "/photoWrite", method = RequestMethod.GET)
 	public String photoyWrite(Model model, PhotoFolderVO folder) {
 		model.addAttribute("folder", ps.photo_folder());
-		return "photoWrite";
+		return "/photo/photoWrite";
 	}
 
 	@RequestMapping(value = "/photoWrite", method = RequestMethod.POST)
@@ -61,7 +61,7 @@ public class PhotoController {
 	public String photoModify(Model model, PhotoVO photo) {
 		model.addAttribute("detail", ps.detail(photo));
 		model.addAttribute("folder", ps.photo_folder());
-		return "photoModify";
+		return "/photo/photoModify";
 	}
 
 	@RequestMapping(value = "/photoModify", method = RequestMethod.POST)
@@ -74,7 +74,7 @@ public class PhotoController {
 	@RequestMapping(value = "/photoDetail", method = RequestMethod.GET)
 	public String photoDetail(Model model, PhotoVO photo) {
 		model.addAttribute("detail", ps.detail(photo));
-		return "photoDetail";
+		return "/photo/photoDetail";
 	}
 
 	// 해당게시물의 첨부파일의 데이터를 ajax로 전송
@@ -86,7 +86,7 @@ public class PhotoController {
 	@RequestMapping(value = "/photoSetting", method = RequestMethod.GET)
 	public String photoSetting(Model model) {
 		model.addAttribute("photo_folder", ps.photo_folder());
-		return "photoSetting";
+		return "/photo/photoSetting";
 	}
 
 	@RequestMapping(value = "/photoFolderAdd", method = RequestMethod.GET)

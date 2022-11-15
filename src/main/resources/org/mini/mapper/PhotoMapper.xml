@@ -25,13 +25,13 @@
 				where folder is not null
 			</otherwise>
 		</choose>
-		order by updatedate desc
+		order by regdate desc
 		)AS photolist
 		join photo_file on photolist.bno = photo_file.bno
 		<![CDATA[
      	 where rownum > (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
     	]]>
-		order by updatedate desc
+		order by regdate desc
 	</select>
 
 	<select id="detail" resultType="org.mini.model.PhotoVO">

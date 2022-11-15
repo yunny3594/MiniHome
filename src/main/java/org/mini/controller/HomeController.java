@@ -1,6 +1,8 @@
 package org.mini.controller;
 
+import org.mini.model.HomeVO;
 import org.mini.model.ilchonVO;
+import org.mini.service.HomeService;
 import org.mini.service.ilchonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,17 +15,28 @@ public class HomeController {
 
 	@Autowired
 	ilchonService is;
+	HomeService hs;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model, ilchonVO ivo) {
+	public String home(Model model, HomeVO hvo) {
 		// 투데이
 		// 왼쪽 프로필
 		// 최근게시물, 총개수 가져오기
+		try {
+			model.addAttribute("total_diary", hs.total_diary());
+			model.addAttribute("total_photo", hs.total_photo());
+			model.addAttribute("total_visit", hs.total_visit());
+		} catch (NullPointerException e) {
+			model.addAttribute("total_diary", 0);
+			model.addAttribute("total_photo", 0);
+			model.addAttribute("total_visit", 0);
+		}
+
 		// 일촌평
 		model.addAttribute("ilchonlist", is.list());
+
 		return "home";
 	}
-
 
 	// 일촌평등록
 	@RequestMapping(value = "/ilchonWrite", method = RequestMethod.POST)
@@ -56,11 +69,6 @@ public class HomeController {
 
 	@RequestMapping(value = "/video", method = RequestMethod.GET)
 	public void video() {
-
-	}
-
-	@RequestMapping(value = "/visit", method = RequestMethod.GET)
-	public void visit() {
 
 	}
 

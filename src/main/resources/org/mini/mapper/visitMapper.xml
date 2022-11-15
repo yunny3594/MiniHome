@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.mini.mapper.visitMapper">
+
+	<select id='list' resultType="org.mini.model.visitVO">
+		select * from visit
+		order by vno desc;
+	</select>
+
+	<insert id="write">
+		insert into visit(userid,username,content,mem)
+		values
+		(#{userid},
+		<if test="mem==1">
+			(select m.username from member m where #{userid}=m.userid)
+		</if>
+		<if test="mem==0">#{username}</if>
+		,#{content},#{mem})
+	</insert>
+
+	<delete id='delete'>
+		delete from visit
+		where vno=#{vno}
+	</delete>
+
+	<update id="modify">
+		update visit set content=#{content} where vno=#{vno}
+	</update>
+
+	<select id="total" resultType="int">
+		select count(*) from visit
+	</select>
+
+</mapper>

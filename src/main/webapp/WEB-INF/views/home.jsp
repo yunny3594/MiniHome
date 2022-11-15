@@ -57,9 +57,10 @@
 		<div class="updated_news_left">
 			<!-- 가장 최근에 등록된 글 -->
 			<ul>
-				<li>최근 등록된 게시물</li>
-				<li>최근 등록된 게시물</li>
-				<li>최근 등록된 게시물</li>
+			<!--	<c:forEach var="update" items="${updatelist}">
+					<li>${update.title}</li>
+					</c:forEach>
+			-->
 			</ul>
 		</div>
 
@@ -67,8 +68,8 @@
 			<!-- 각 게시판 글 수 -->
 			<table>
 				<tr>
-					<td>다이어리 0/0</td>
-					<td>사진첩 0/0</td>
+					<td>다이어리 ${update_diary}/${total_diary}</td>
+					<td>사진첩  ${update_photo}/${total_photo}</td>
 				</tr>
 				<tr>
 					<td>갤러리 0/0</td>

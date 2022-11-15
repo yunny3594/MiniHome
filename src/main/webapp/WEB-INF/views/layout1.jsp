@@ -15,7 +15,8 @@
 			<a href="/Login"><button>로그인</button></a> <a href="/SignUp"><button>회원가입</button></a>
 		</c:when>
 		<c:otherwise>
-			<a href="/Logout"><button>로그아웃</button></a>
+			<a href="/Logout"><button>로그아웃</button></a> 사용자 : ${sessionScope.login.userid}님
+			<a href="/memberDetail?userid=${sessionScope.login.userid}"><button>회원정보</button></a>
 		</c:otherwise>
 	</c:choose>
 		

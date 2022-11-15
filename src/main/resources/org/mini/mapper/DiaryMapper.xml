@@ -28,8 +28,7 @@
 	</select>
 
 	<select id="detail" resultType="org.mini.model.DiaryVO">
-		select * from diary where
-		dno=#{dno}
+		select * from diary where dno=#{dno}
 	</select>
 	
 	<select id="total" resultType="int">

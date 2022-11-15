@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mini.mapper.HomeMapper">
+
+	<select id="total_diary" resultType="int">
+		select count(*) from diary;
+	</select>
+
+	<select id="total_photo" resultType="int">
+		select count(*) from photo;
+	</select>
+
+	<select id="total_visit" resultType="int">
+		select count(*) from visit;
+	</select>
+
+	<select id="update_diary" resultType="int">
+		select count(*) from diary where regdate between date_add(now(), interval -1 week ) and now();
+	</select>
+	
+	<select id="update_photo" resultType="int">
+		select count(*) from photo where regdate between date_add(now(), interval -1 week ) and now();
+	</select>
+	
+	<select id="update_visit" resultType="int">
+		select count(*) from visit where regdate between date_add(now(), interval -1 week ) and now();
+	</select>
+
+	<select id="update_news" resultType="org.mini.model.HomeVO">
+		select d.regdate as regdate ,d.content as title from diary d
+		union
+		select p.regdate as regdate ,p.title as title from photo p
+		union
+		select v.regdate as regdate ,v.content as title from visit v
+		order by regdate desc
+		limit 5;
+	</select> 
+
+</mapper>
