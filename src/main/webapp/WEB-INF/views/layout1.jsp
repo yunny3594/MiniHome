@@ -6,20 +6,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js">
+</script>
+<script type="text/javascript" src="/resources/js/popup.js"></script>
 </head>
 <body>
 
 	<div class="top">
-	<c:choose>
-		<c:when test="${sessionScope.login.userid eq null}">
-			<a href="/Login"><button>로그인</button></a> <a href="/SignUp"><button>회원가입</button></a>
-		</c:when>
-		<c:otherwise>
-			<a href="/Logout"><button>로그아웃</button></a> 사용자 : ${sessionScope.login.userid}님
+		<c:choose>
+			<c:when test="${sessionScope.login.userid eq null}">
+				<a href="javascript:void(0);" onclick="LoginPOP();"><button>로그인</button></a>
+				<a href="javascript:void(0);" onclick="SignupPOP();"><button>회원가입</button></a>
+				
+			</c:when>
+			<c:otherwise>
+				<a href="/Logout"><button>로그아웃</button></a> 사용자 : ${sessionScope.login.userid}님
 			<a href="/memberDetail?userid=${sessionScope.login.userid}"><button>회원정보</button></a>
-		</c:otherwise>
-	</c:choose>
-		
+			</c:otherwise>
+		</c:choose>
+
 	</div>
 	<div class="container">
 		<div class="left_outline">

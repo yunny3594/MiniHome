@@ -8,6 +8,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js">
 </script>
 <script type="text/javascript" src="/resources/js/signup.js"></script>
+<script type="text/javascript" src="/resources/js/popup.js"></script>
 </head>
 <body>
 	<form action="/SignUp" method="post">
@@ -33,7 +34,7 @@
 				<label id="icmsg"></label></td>
 			</tr>
 		</table>
-		<button type="button" id="join">가입하기</button>
+		<button type="button" id="join" onclick="Signup">가입하기</button>
 	</form>
 </body>
 </html>
