@@ -49,23 +49,21 @@
 		</select>
 	</div>
 	<%@ include file="/WEB-INF/views/layout2.jsp"%>
-
+	<!--
 	<div class="updated_news_title">
 		<strong>Update News</strong>
 	</div>
 	<div class="updated_news_contents">
 		<div class="updated_news_left">
-			<!-- 가장 최근에 등록된 글 -->
+			 가장 최근에 등록된 글
 			<ul>
-			<!--	<c:forEach var="update" items="${updatelist}">
+				<c:forEach var="update" items="${updatelist}">
 					<li>${update.title}</li>
 					</c:forEach>
-			-->
+		
 			</ul>
 		</div>
-
-		<div class="updated_news_right">
-			<!-- 각 게시판 글 수 -->
+		<div class="updated_news_right">	
 			<table>
 				<tr>
 					<td>다이어리 ${update_diary}/${total_diary}</td>
@@ -80,8 +78,9 @@
 					<td>방명록 0/0</td>
 				</tr>
 			</table>
-		</div>
+		</div> 
 	</div>
+	-->
 	<div class="miniroom_title">
 		<strong>Mini Room</strong>
 	</div>
@@ -94,24 +93,24 @@
 		<div class="friends_write">
 			<form action="/ilchonWrite" method="POST">
 				<strong>Friends say</strong> <input type="text" name="content">
-				<input type="text" name="userid"
+				<input type="hidden" name="userid"
 					value="${sessionScope.login.userid}"> <input type="submit"
 					value="확인">
 			</form>
 		</div>
 		<ul>
-		
+
 			<c:forEach items="${ilchonlist}" var="list">
-				<li>${list.content}(${list.ilchon}${list.username})&nbsp;
-				<span id="ilchon_date"><fmt:formatDate pattern="yyyy.MM.dd" value="${list.regdate}" /></span> 
-					<!-- 로그인 된 아이디와 일촌평작성 아이디가 같으면 삭제버튼 -->
+				<li>${list.content}(${list.ilchon}${list.username})&nbsp;<span
+					id="ilchon_date"><fmt:formatDate pattern="yyyy.MM.dd"
+							value="${list.regdate}" /></span> <!-- 로그인 된 아이디와 일촌평작성 아이디가 같으면 삭제버튼 -->
 					<c:if test="${sessionScope.login.userid eq list.userid }">
 						<a href="/ilchonDelete?ino=${list.ino}">삭제</a>
 					</c:if>
 
 				</li>
 			</c:forEach>
-			
+
 		</ul>
 	</div>
 	<%@ include file="/WEB-INF/views/layout3.jsp"%>

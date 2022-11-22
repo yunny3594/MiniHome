@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mini.mapper.VideoAttachMapper">
+	<!-- 파일경로, 파일명, uuid, image여부를 attach테이블 insert -->
+	<insert id="insert">
+		insert into photo_file(uuid, uploadPath, filename, image, bno)
+		value(#{uuid},#{uploadPath},#{fileName},#{image},#{bno});
+	</insert>
+
+	<select id="attachlist" resultType="org.mini.model.AttachFileVO">
+		select * from photo_file where bno=#{bno};
+	</select>
+	
+	<select id="attachlist2" resultType="org.mini.model.AttachFileVO">
+		select f.* from photo p,photo_file f where f.bno=#{bno};
+	</select>
+
+</mapper>

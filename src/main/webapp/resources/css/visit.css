@@ -17,8 +17,8 @@
 
 /*프로필 드랍다운*/
 .profile_2 select {
-	width: 180px;
-	margin: 10px;
+	width: 150px;
+	margin: auto;
 	font-size: 18px;
 	text-align: center;
 	background-color: #c8f1ff;
@@ -28,7 +28,7 @@
 	display: flex;
 	background-color: #e4e4e4;
 	width: 95%;
-	height: 270px;
+	height: 200px;
 	margin: auto;
 	margin-top: 10px;
 	margin-bottom: 30px;
@@ -36,26 +36,26 @@
 }
 
 #minimi {
-	width: 200px;
-	height: 200px;
-	margin: 20px 5px 5px 20px;
+	width: 150px;
+	height: 150px;
+	margin: 10px 5px 5px 10px;
 }
 
 textarea {
-	width: 440px;
-	height: 200px;
+	width: 330px;
+	height: 150px;
 	margin: auto;
 }
 
 #writebtn {
 	position: absolute;
 	right: 20px;
-	bottom: 10px;
+	bottom: 7px;
 }
 
 .writer{
 	position: absolute;
-	right: 80px;
+	right: 70px;
 	bottom: 10px;
 }
 
@@ -63,9 +63,9 @@ textarea {
 	background-color: transparent;
 	border: none;
 	position: absolute;
-	left: 80px;
-	bottom: 20px;
-	font-size: 18px;
+	left: 50px;
+	bottom: 15px;
+	font-size: 15px;
 }
 
 .visit_write select option {
@@ -81,7 +81,14 @@ textarea {
 	position: relative;
 }
 
-.visit_name {
+.visit_name1 {
+
+	margin: auto;
+	background-color: #ff9f40;
+	border-top: 1px solid #a1a1a1;
+	padding:10px;
+}
+.visit_name2 {
 
 	margin: auto;
 	background-color: #e4e4e4;

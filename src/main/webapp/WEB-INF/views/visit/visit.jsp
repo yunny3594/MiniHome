@@ -40,37 +40,74 @@
 			<form action="/visitWrite" method="POST">
 				<img alt="" src="/resources/img/기본미니미.jpg" id="minimi">
 				<textarea maxlength="500" name="content"></textarea>
-				
-				
+
+
 				<select>
 					<option>미니미</option>
 					<option>미니미</option>
 					<option>미니미</option>
 					<option>미니미</option>
-				</select> 
-				
-					<c:if test="${sessionScope.login == null}">
-						<input type="hidden" value="0" name="mem">
-						<input type="text" placeholder="작성자입력" name="username" class="writer">
-					
-					</c:if>
-					<c:if test="${sessionScope.login != null}">
-						<input type="hidden" value="1" name="mem">
-						<input type="hidden" value="${sessionScope.login.userid}" class="writer" name="userid">
-					</c:if>
+				</select>
+
+				<c:if test="${sessionScope.login == null}">
+					<input type="hidden" value="0" name="mem">
+					<input type="text" placeholder="작성자입력" name="username"
+						class="writer">
+
+				</c:if>
+				<c:if test="${sessionScope.login != null}">
+					<input type="hidden" value="1" name="mem">
+					<input type="hidden" value="${sessionScope.login.userid}"
+						class="writer" name="userid">
+				</c:if>
 				<input type="submit" value="확인" id="writebtn">
 			</form>
 		</div>
 		<c:forEach var="list" items="${list}">
-			<div class="visit_list">
-				<div class="visit_name">NO.${list.vno} ${list.username} (<fmt:formatDate pattern="yyyy.MM.dd" value="${list.regdate}" />)
-				<a href="/visitDelete?vno=${list.vno}">삭제</a></div>
-				<div class="visit_content">
-					<img alt="" src="/resources/img/기본미니미.jpg">
-					<p>${list.content}</p>
-					
-				</div>
-			</div>
+
+			<c:choose>
+
+				<c:when test="${list.mem}">
+					<div class="visit_list">
+						<div class="visit_name1">
+							NO.${list.vno} ${list.username} (
+							<fmt:formatDate pattern="yyyy.MM.dd" value="${list.regdate}" />
+							)
+							<c:if test="${sessionScope.login.userid eq list.userid}">
+								<a href="/visitDelete?vno=${list.vno}">삭제</a>
+							</c:if>
+							
+							<c:if test="${sessionScope.login.userid eq 'admin'}">
+								<a href="/visitDelete?vno=${list.vno}">삭제</a>
+							</c:if>
+
+						</div>
+						<div class="visit_content">
+							<img alt="" src="/resources/img/기본미니미.jpg">
+							<p>${list.content}</p>
+						</div>
+					</div>
+				</c:when>
+
+				<c:when test="${!list.mem}">
+					<div class="visit_list">
+						<div class="visit_name2">
+							NO.${list.vno} ${list.username} (
+							<fmt:formatDate pattern="yyyy.MM.dd" value="${list.regdate}" />
+							)
+							<c:if test="${sessionScope.login.userid eq 'admin'}">
+								<a href="/visitDelete?vno=${list.vno}">삭제</a>
+							</c:if>
+						</div>
+						<div class="visit_content">
+							<img alt="" src="/resources/img/기본미니미.jpg">
+							<p>${list.content}</p>
+						</div>
+					</div>
+				</c:when>
+
+			</c:choose>
+
 		</c:forEach>
 	</div>
 

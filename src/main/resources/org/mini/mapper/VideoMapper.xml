@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mini.mapper.VideoMapper">
+
+	<insert id="write">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
+			<!-- select 값을 keyProperty="bno"에 추가 --><!-- BEFORE로 먼저 -->
+			select ifnull(max(bno),0)+1 bno from photo
+		</selectKey>
+		insert into photo(id,title, content, folder)
+		values('yunny',#{title},#{content},#{folder});
+	</insert>
+
+	<select id="list" resultType="org.mini.model.PhotoVO">
+		select photolist.*,
+		Concat(Replace(uploadPath, '\\','/'),'/',uuid , '_' ,filename)AS file_address
+		from(select @rownum:=@rownum+1 rownum, photo.* from photo, (select @rownum:=0)AS tmp
+		<choose>
+			<when test="folder != 0">
+				where folder=#{folder}
+			</when>
+			<otherwise>
+				where folder is not null
+			</otherwise>
+		</choose>
+		order by regdate desc
+		)AS photolist
+		join photo_file on photolist.bno = photo_file.bno
+		<![CDATA[
+     	 where rownum > (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
+    	]]>
+		order by regdate desc
+	</select>
+
+	<select id="detail" resultType="org.mini.model.PhotoVO">
+		select * from photo where
+		bno=#{bno};
+	</select>
+
+	<update id="modify">
+		update photo set title=#{title}, content=#{content}, folder=#{folder}
+		where bno=#{bno};
+	</update>
+
+	<delete id="remove">
+		delete from photo where bno=#{bno};
+	</delete>
+
+	<select id="total" resultType="int">
+		select count(*) from photo
+		<choose>
+			<when test="folder != 0">
+				where folder=#{folder}
+			</when>
+			<otherwise>
+				where folder is not null
+			</otherwise>
+		</choose>
+	</select>
+
+	<update id="like">
+		update photo set likecnt=likecnt+1 where bno=#{bno};
+	</update>
+	
+	<!-- 사진첩 폴더 추가 -->
+	<insert id="add_folder">
+		insert into photo_folder(fno,fname) value((select ifnull(max(f.fno)+1,1) from photo_folder f),#{fname})
+	</insert>
+	<!-- 사진첩 폴더 삭제 -->
+	<delete id="delete_folder">
+		delete from photo_folder where fno=#{fno}
+	</delete>
+	<!-- 사진첩 폴더명 수정 -->
+	<update id="modify_folder">
+		update photo_folder set fname=#{fname} where fno=#{fno}
+	</update>
+	
+	<select id="photo_folder" resultType="org.mini.model.PhotoFolderVO">
+		select * from photo_folder
+	</select>
+	
+</mapper>
