@@ -9,8 +9,8 @@
 			<!-- select 값을 keyProperty="bno"에 추가 --><!-- BEFORE로 먼저 -->
 			select ifnull(max(bno),0)+1 bno from photo
 		</selectKey>
-		insert into photo(id,title, content, folder)
-		values('yunny',#{title},#{content},#{folder});
+		insert into photo(title, content, folder)
+		values(#{title},#{content},#{folder});
 	</insert>
 
 	<select id="list" resultType="org.mini.model.PhotoVO">

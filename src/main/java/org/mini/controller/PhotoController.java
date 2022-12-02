@@ -13,30 +13,37 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class PhotoController {
-	
 
 	@Autowired
 	PhotoService ps;
 
-	// ☆사진첩☆
 	@RequestMapping(value = "/photo", method = RequestMethod.GET)
 	public String photo(Model model, CriteriaVO cri, PhotoVO photo, PhotoFolderVO folder) {
 		model.addAttribute("list", ps.list(cri));
 		model.addAttribute("detail", ps.detail(photo));
 		int total = ps.total(cri);
+		model.addAttribute("total", total);
 		model.addAttribute("paging", new PhotoPageVO(cri, total));
 		model.addAttribute("attach", ps.attachlist2(photo.getBno()));
 		model.addAttribute("folder", ps.photo_folder());
 
 		return "/photo/photo";
 	}
-
-	// 사진첩 글쓰기
+	
+	@ResponseBody
+	@PostMapping("/photo_like")
+	public void photo_like(@RequestBody PhotoVO photo) {
+		ps.like(photo);
+	}
+	
 	@RequestMapping(value = "/photoWrite", method = RequestMethod.GET)
 	public String photoyWrite(Model model, PhotoFolderVO folder) {
 		model.addAttribute("folder", ps.photo_folder());
@@ -49,14 +56,12 @@ public class PhotoController {
 		return "redirect:/photo";
 	}
 
-	// 사진첩 삭제
 	@RequestMapping(value = "/photoRemove", method = RequestMethod.GET)
 	public String photoRemove(PhotoVO photo) {
 		ps.remove(photo);
 		return "redirect:/photo";
 	}
 
-	// 사진첩 수정
 	@RequestMapping(value = "/photoModify", method = RequestMethod.GET)
 	public String photoModify(Model model, PhotoVO photo) {
 		model.addAttribute("detail", ps.detail(photo));
@@ -70,14 +75,12 @@ public class PhotoController {
 		return "redirect:/photo";
 	}
 
-	// 사진첩 디테일
 	@RequestMapping(value = "/photoDetail", method = RequestMethod.GET)
 	public String photoDetail(Model model, PhotoVO photo) {
 		model.addAttribute("detail", ps.detail(photo));
 		return "/photo/photoDetail";
 	}
 
-	// 해당게시물의 첨부파일의 데이터를 ajax로 전송
 	@RequestMapping(value = "/attachlist", method = RequestMethod.GET)
 	public ResponseEntity<ArrayList<AttachFileVO>> uploadAjaxPost(int bno) {
 		return new ResponseEntity<>(ps.attachlist(bno), HttpStatus.OK);

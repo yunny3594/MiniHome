@@ -17,9 +17,9 @@
 
 /*프로필 드랍다운*/
 .profile_2 select {
-	width: 150px;
-	margin: auto;
-	font-size: 18px;
+	width: 140px;
+	margin: 8px;
+	font-size: 15px;
 	text-align: center;
 	background-color: #c8f1ff;
 }

@@ -17,9 +17,9 @@
 
 /*프로필 드랍다운*/
 select {
-	width: 180px;
-	margin: 10px;
-	font-size: 18px;
+	width: 140px;
+	margin: 7px;
+	font-size: 15px;
 	text-align: center;
 	background-color: #c8f1ff;
 }

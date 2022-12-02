@@ -2,78 +2,55 @@ package org.mini.service;
 
 import java.util.ArrayList;
 
-import org.mini.mapper.PhotoAttachMapper;
-import org.mini.mapper.PhotoMapper;
-import org.mini.model.AttachFileVO;
+import org.mini.mapper.VideoMapper;
 import org.mini.model.CriteriaVO;
-import org.mini.model.PhotoFolderVO;
-import org.mini.model.PhotoVO;
+import org.mini.model.VideoFolderVO;
+import org.mini.model.VideoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class VideoServiceImpl implements VideoService {
 	@Autowired
-	PhotoMapper pm;
-	@Autowired
-	PhotoAttachMapper pam;
+	VideoMapper vdm;
 
-	public void write(PhotoVO photo) {
-		pm.write(photo);
-		photo.getAttach().forEach(attach -> {
-			// AttachFileVO?ùò bno?óê BoardVO?ùò bnoÎ•? ???û•
-			attach.setBno(photo.getBno());
-			pam.insert(attach);
-		});
+
+	public void write(VideoVO video) {
+		vdm.write(video);
+
 	}
 
-	public ArrayList<PhotoVO> list(CriteriaVO cri) {
-		return pm.list(cri);
+	public ArrayList<VideoVO> list(CriteriaVO cri){
+		return vdm.list(cri);
+		
 	}
 
-	public PhotoVO detail(PhotoVO photo) {
-		return pm.detail(photo);
+	public void modify(VideoVO video) {
+		vdm.modify(video);
 	}
 
-	public void modify(PhotoVO photo) {
-		pm.modify(photo);
-	}
-
-	public void remove(PhotoVO photo) {
-		pm.remove(photo);
+	public void remove(VideoVO video) {
+		vdm.remove(video);
 	}
 
 	public int total(CriteriaVO cri) {
-		return pm.total(cri);
+		return vdm.total(cri);
 	}
 
-	public void like(PhotoVO photo) {
-		pm.like(photo);
+	public void add_folder(VideoFolderVO folder) {
+		vdm.add_folder(folder);
 	}
 
-	public ArrayList<AttachFileVO> attachlist(int bno) {
-		return pam.attachlist(bno);
+	public void modify_folder(VideoFolderVO folder) {
+		vdm.modify_folder(folder);
 	}
 
-	public ArrayList<AttachFileVO> attachlist2(int bno) {
-		return pam.attachlist2(bno);
+	public void delete_folder(VideoFolderVO folder) {
+		vdm.delete_folder(folder);
 	}
 
-	public void add_folder(PhotoFolderVO folder) {
-		pm.add_folder(folder);
-	}
-	
-	public void modify_folder(PhotoFolderVO folder) {
-		pm.modify_folder(folder);
-	}
-
-	public void delete_folder(PhotoFolderVO folder) {
-		pm.delete_folder(folder);
-	}
-
-
-	public ArrayList<PhotoFolderVO> photo_folder(){
-		return pm.photo_folder();
+	public ArrayList<VideoFolderVO> video_folder(){
+		return vdm.video_folder();
 	}
 
 }

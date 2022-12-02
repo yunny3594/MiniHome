@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mini.mapper.PhotoReplyMapper">
+
+	<insert id="rewrite">
+		insert into photo_reply(reply,id,bno)
+		values(#{reply},#{id},#{bno})
+	</insert>
+
+	<select id="list" resultType="org.mini.model.PhotoReplyVO">
+		select * from photo_reply where
+		bno=#{bno}
+	</select>
+
+	<update id="modify">
+		update reply set photo_reply=#{reply} where rno=#{rno}
+	</update>
+
+	<delete id="remove">
+		delete from photo_reply where rno=#{rno}
+	</delete>
+	
+</mapper>

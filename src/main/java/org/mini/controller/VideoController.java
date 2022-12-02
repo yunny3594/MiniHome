@@ -2,6 +2,7 @@ package org.mini.controller;
 
 import org.mini.model.CriteriaVO;
 import org.mini.model.VideoFolderVO;
+import org.mini.model.VideoPageVO;
 import org.mini.model.VideoVO;
 import org.mini.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,80 +20,68 @@ public class VideoController {
 
 	@RequestMapping(value = "/video", method = RequestMethod.GET)
 	public String video(Model model, CriteriaVO cri, VideoVO video, VideoFolderVO folder) {
-//		model.addAttribute("list", ps.list(cri));
-//		model.addAttribute("detail", ps.detail(photo));
-//		int total = ps.total(cri);
-//		model.addAttribute("paging", new PhotoPageVO(cri, total));
-//		model.addAttribute("attach", ps.attachlist2(photo.getBno()));
-//		model.addAttribute("folder", ps.photo_folder());
+		model.addAttribute("list", vds.list(cri));
+//		model.addAttribute("detail", vds.detail(video));
+		int total = vds.total(cri);
+		model.addAttribute("paging", new VideoPageVO(cri, total));
+		model.addAttribute("folder", vds.video_folder());
 
 		return "/video/video";
 	}
 //
-//	@RequestMapping(value = "/photoWrite", method = RequestMethod.GET)
-//	public String photoyWrite(Model model, PhotoFolderVO folder) {
-//		model.addAttribute("folder", ps.photo_folder());
-//		return "/photo/photoWrite";
+	@RequestMapping(value = "/videoWrite", method = RequestMethod.GET)
+	public String videoyWrite(Model model, VideoFolderVO folder) {
+		model.addAttribute("folder", vds.video_folder());
+		return "/video/videoWrite";
+	}
+
+	@RequestMapping(value = "/videoWrite", method = RequestMethod.POST)
+	public String videoWrite(VideoVO video) {
+		vds.write(video);
+		return "redirect:/video";
+	}
+
+//	@RequestMapping(value = "/videoRemove", method = RequestMethod.GET)
+//	public String videoRemove(VideoVO video) {
+//		vds.remove(video);
+//		return "redirect:/video";
 //	}
 //
-//	@RequestMapping(value = "/photoWrite", method = RequestMethod.POST)
-//	public String photoWrite(PhotoVO photo) {
-//		ps.write(photo);
-//		return "redirect:/photo";
+//	@RequestMapping(value = "/videoModify", method = RequestMethod.GET)
+//	public String videoModify(Model model, VideoVO video) {
+//		model.addAttribute("detail", vds.detail(video));
+//		model.addAttribute("folder", vds.video_folder());
+//		return "/video/videoModify";
 //	}
 //
-//	@RequestMapping(value = "/photoRemove", method = RequestMethod.GET)
-//	public String photoRemove(PhotoVO photo) {
-//		ps.remove(photo);
-//		return "redirect:/photo";
+//	@RequestMapping(value = "/videoModify", method = RequestMethod.POST)
+//	public String videoModify(VideoVO video) {
+//		vds.modify(video);
+//		return "redirect:/video";
 //	}
-//
-//	@RequestMapping(value = "/photoModify", method = RequestMethod.GET)
-//	public String photoModify(Model model, PhotoVO photo) {
-//		model.addAttribute("detail", ps.detail(photo));
-//		model.addAttribute("folder", ps.photo_folder());
-//		return "/photo/photoModify";
-//	}
-//
-//	@RequestMapping(value = "/photoModify", method = RequestMethod.POST)
-//	public String photoModify(PhotoVO photo) {
-//		ps.modify(photo);
-//		return "redirect:/photo";
-//	}
-//
-//	@RequestMapping(value = "/photoDetail", method = RequestMethod.GET)
-//	public String photoDetail(Model model, PhotoVO photo) {
-//		model.addAttribute("detail", ps.detail(photo));
-//		return "/photo/photoDetail";
-//	}
-//
-//	@RequestMapping(value = "/attachlist", method = RequestMethod.GET)
-//	public ResponseEntity<ArrayList<AttachFileVO>> uploadAjaxPost(int bno) {
-//		return new ResponseEntity<>(ps.attachlist(bno), HttpStatus.OK);
-//	}
-//
-//	@RequestMapping(value = "/photoSetting", method = RequestMethod.GET)
-//	public String photoSetting(Model model) {
-//		model.addAttribute("photo_folder", ps.photo_folder());
-//		return "/photo/photoSetting";
-//	}
-//
-//	@RequestMapping(value = "/photoFolderAdd", method = RequestMethod.GET)
-//	public String photoSetting(PhotoFolderVO folder) {
-//		ps.add_folder(folder);
-//		return "redirect:/photoSetting";
-//	}
-//
-//	@RequestMapping(value = "/photoFolderModify", method = RequestMethod.GET)
-//	public String photoFolderModify(PhotoFolderVO folder) {
-//		ps.modify_folder(folder);
-//		return "redirect:/photoSetting";
-//	}
-//
-//	@RequestMapping(value = "/photoFolderDelete", method = RequestMethod.GET)
-//	public String photoFolderDelete(PhotoFolderVO folder) {
-//		ps.delete_folder(folder);
-//		return "redirect:/photoSetting";
-//	}
+
+	@RequestMapping(value = "/videoSetting", method = RequestMethod.GET)
+	public String videoSetting(Model model) {
+		model.addAttribute("video_folder", vds.video_folder());
+		return "/video/videoSetting";
+	}
+
+	@RequestMapping(value = "/videoFolderAdd", method = RequestMethod.GET)
+	public String videoSetting(VideoFolderVO folder) {
+		vds.add_folder(folder);
+		return "redirect:/video";
+	}
+
+	@RequestMapping(value = "/videoFolderModify", method = RequestMethod.GET)
+	public String videoFolderModify(VideoFolderVO folder) {
+		vds.modify_folder(folder);
+		return "redirect:/video";
+	}
+
+	@RequestMapping(value = "/videoFolderDelete", method = RequestMethod.GET)
+	public String videoFolderDelete(VideoFolderVO folder) {
+		vds.delete_folder(folder);
+		return "redirect:/video";
+	}
 
 }

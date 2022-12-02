@@ -7,9 +7,9 @@
 <meta charset="UTF-8">
 <title>gallery</title>
 <script type="text/javascript"
-	src="http://code.jquery.com/jquery-latest.js"></script>
+	src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/galleryFile.js"></script>
+	src="/resources/js/galleryFile.js"></script>
 
 </head>
 <body>

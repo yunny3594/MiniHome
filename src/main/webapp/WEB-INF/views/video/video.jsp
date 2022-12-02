@@ -29,23 +29,21 @@
 	<div class="folder">
 		<strong class="photo_album">VIDEO</strong>
 		<ul>
-			<li><a class="select" href="/photo">🔎전체보기</a></li>
+			<li><a class="select" href="/video">🔎전체보기</a></li>
 			<c:forEach items="${folder}" var="folder">
 				<li><a class="select" href="/video?folder=${folder.fno}">📂${folder.fname}</a></li>
 			</c:forEach>
+			<li><a href="/videoSetting" id="foldersetting">⚙폴더관리</a></li>
 		</ul>
-		<br> <br> <a href="/videoSetting" id="foldersetting">폴더관리</a>
+
 	</div>
 
 	<%@ include file="/WEB-INF/views/layout2.jsp"%>
 
 	<div class="photo_contents">
-	
-		<video controls poster="" preload="metadata" controlsList="nodownload" width="100%">
-			<source src="/resources/video/video1.mp4" type="video/mp4">
-		</video>
-		
-		
+
+
+
 		<table>
 			<!-- for문 시작 -->
 			<c:forEach items="${list}" var="list">
@@ -58,17 +56,12 @@
 
 				<tr>
 					<td class="content">
-					
-					<iframe></iframe> 
-					
-					<video controls muted poster="" preload="auto">
-						<source src="src/main/webapp/resources/video/video1.mp4" type="video/mp4">
-					</video>
-					<br>${list.content}</td>
+						<div class="iframe"> ${list.iframe} </div> <br>${list.content}</td>
+						
 				</tr>
 				<tr>
-					<td><a href="/videoModify?bno=${list.bno}">수정</a> <a
-						href="/videoRemove?bno=${list.bno}">삭제</a></td>
+					<td><a href="/videoModify?vdno=${list.vdno}">수정</a> 
+					<a href="/videoRemove?vdno=${list.vdno}">삭제</a></td>
 				</tr>
 
 			</c:forEach>

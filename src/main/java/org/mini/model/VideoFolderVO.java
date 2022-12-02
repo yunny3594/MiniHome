@@ -20,9 +20,5 @@ public class VideoFolderVO {
 		this.fname = fname;
 	}
 
-	@Override
-	public String toString() {
-		return "PhotoFolderVO [fno=" + fno + ", fname=" + fname + "]";
-	}
 
 }

@@ -59,7 +59,7 @@ $(document).ready(function() {
 				$(result).each(function(i,obj){
 					//console.log(obj)
 					//console.log(obj.fileName)
-					input += "<input type='text' name='attach["+i+"].uploadPath' value ='" + obj.uploadPath + "'><br>";
+					 input += "<input type='text' name='attach["+i+"].uploadPath' value ='" + obj.uploadPath + "'><br>";
 					 input += "<input type='text' name='attach["+i+"].fileName' value ='" + obj.fileName + "'><br>";
 					 input += "<input type='text' name='attach["+i+"].uuid' value ='" + obj.uuid + "'><br>";
 					 input += "<input type='text' name='attach["+i+"].image' value ='" + obj.image + "'><br>";

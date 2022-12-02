@@ -1,32 +1,29 @@
 package org.mini.model;
 
-import java.util.ArrayList;
-
 public class VideoVO {
-	private int bno;
-	private String id;
+	private int vdno;
 	private String title;
 	private String content;
 	private String regdate;
 	private int likecnt;
 	private int folder;
-	private String file_address;
-	private ArrayList<AttachFileVO> attach;
+	private String iframe;
 
-	public int getBno() {
-		return bno;
+
+	public int getVdno() {
+		return vdno;
 	}
 
-	public void setBno(int bno) {
-		this.bno = bno;
+	public String getIframe() {
+		return iframe;
 	}
 
-	public String getId() {
-		return id;
+	public void setIframe(String iframe) {
+		this.iframe = iframe;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setVdno(int vdno) {
+		this.vdno = vdno;
 	}
 
 	public String getTitle() {
@@ -61,22 +58,6 @@ public class VideoVO {
 		this.likecnt = likecnt;
 	}
 
-	public ArrayList<AttachFileVO> getAttach() {
-		return attach;
-	}
-
-	public void setAttach(ArrayList<AttachFileVO> attach) {
-		this.attach = attach;
-	}
-
-	public String getFile_address() {
-		return file_address;
-	}
-
-	public void setFile_address(String file_address) {
-		this.file_address = file_address;
-	}
-
 	public int getFolder() {
 		return folder;
 	}
@@ -84,5 +65,7 @@ public class VideoVO {
 	public void setFolder(int folder) {
 		this.folder = folder;
 	}
+
+
 
 }
