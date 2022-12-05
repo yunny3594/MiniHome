@@ -17,7 +17,6 @@
 	<c:forEach items="${photo_folder}" var="folder">
 		<form>
 			<table>
-
 				<tr>
 					<td><input type="text" value="${folder.fno}" name="fno"></td>
 					<td><input type="text" value="${folder.fname}" name="fname"></td>
@@ -26,7 +25,6 @@
 						<input type="submit" value="삭제"
 						formaction="photoFolderDelete" id="delete"></td>
 				</tr>
-
 			</table>
 		</form>
 	</c:forEach>

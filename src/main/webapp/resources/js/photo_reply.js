@@ -1,36 +1,18 @@
 $(document).ready(function() {
-	// var total = $("#total").val();
-	// var arr=[];
-	// var i=0;
-	// while(total){
-	// arr[i]+=$(".bno").val();
-	// alert(arr);
-	// }
-	//	
-	// var bnoValue = $(".bno").val();
-	// alert($(".bno").val());
-	// list(31);
-	// list(32);
-
 	$("#coment").on("click", ".update", function() {
-		// 댓글번호와 댓글내용을 수집해서
+		// 댓글번호와 댓글내용을 수집
 		var rno = $(this).data("rno");
 		var reply = $('#replycontent' + rno).val();
-		// 댓글 수정 함수 호출(댓글번호,댓글내용)
 		modify({
 			rno : rno,
 			reply : reply
 		})
 	})
 
-	// 댓글 삭제 버튼을 클릭하면
 	$(".remove").on("click",function() {
-		// 댓글 번호를 수집해서
 		var rno = $(this).data("rno");
-		// 댓글 삭제 함수 호출(댓글번호)
 		remove(rno);
 	})
-
 })
 
 function remove(rno) {

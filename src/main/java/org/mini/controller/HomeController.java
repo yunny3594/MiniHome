@@ -20,17 +20,6 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, HomeVO hvo) {
 
-		try {
-			model.addAttribute("total_diary", hs.total_diary());
-			model.addAttribute("total_photo", hs.total_photo());
-			model.addAttribute("total_visit", hs.total_visit());
-		} catch (NullPointerException e) {
-			model.addAttribute("total_diary", 0);
-			model.addAttribute("total_photo", 0);
-			model.addAttribute("total_visit", 0);
-		}
-
-
 		model.addAttribute("ilchonlist", is.list());
 
 		return "home";

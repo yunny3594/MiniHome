@@ -11,7 +11,7 @@
 
 </head>
 <body>
-	<form action="/photoModify" method="post" id="form">
+	<form action="/videoModify" method="post" id="form">
 		<table border="1">
 		<tr><td>bno:</td><td><input type="text" value="${detail.bno}" name="bno"></td></tr>
 			<tr>

@@ -41,14 +41,6 @@
 				<img alt="" src="/resources/img/기본미니미.jpg" id="minimi">
 				<textarea maxlength="500" name="content"></textarea>
 
-
-				<select>
-					<option>미니미</option>
-					<option>미니미</option>
-					<option>미니미</option>
-					<option>미니미</option>
-				</select>
-
 				<c:if test="${sessionScope.login == null}">
 					<input type="hidden" value="0" name="mem">
 					<input type="text" placeholder="작성자입력" name="username"

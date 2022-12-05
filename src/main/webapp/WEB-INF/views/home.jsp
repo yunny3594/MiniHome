@@ -99,18 +99,17 @@
 			</form>
 		</div>
 		<ul>
-
 			<c:forEach items="${ilchonlist}" var="list">
-				<li>${list.content}(${list.ilchon}${list.username})&nbsp;<span
-					id="ilchon_date"><fmt:formatDate pattern="yyyy.MM.dd"
-							value="${list.regdate}" /></span> <!-- 로그인 된 아이디와 일촌평작성 아이디가 같으면 삭제버튼 -->
+				<li>${list.content}(${list.ilchon}${list.username})&nbsp;
+					<span id="ilchon_date">
+					<fmt:formatDate pattern="yyyy.MM.dd" value="${list.regdate}" />
+					</span> 
+					<!-- 로그인 된 아이디와 일촌평작성 아이디가 같으면 삭제버튼 -->
 					<c:if test="${sessionScope.login.userid eq list.userid }">
 						<a href="/ilchonDelete?ino=${list.ino}">삭제</a>
 					</c:if>
-
 				</li>
 			</c:forEach>
-
 		</ul>
 	</div>
 	<%@ include file="/WEB-INF/views/layout3.jsp"%>

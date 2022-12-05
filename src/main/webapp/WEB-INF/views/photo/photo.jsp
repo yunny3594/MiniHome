@@ -65,9 +65,13 @@
 						src="/display?fileName=${list.file_address}"> <br>${list.content}</td>
 				</tr>
 				<tr>
-					<td><a href="/photoModify?bno=${list.bno}">수정</a> <a
-						href="/photoRemove?bno=${list.bno}">삭제</a>
-						<div class="like"><a href="javascript:likeup(${list.bno},${list.likecnt});" id="LikeBtn">♥</a><span id="likecnt">x${list.likecnt}</span></div>
+					<td>
+						<a href="/photoModify?bno=${list.bno}">수정</a>
+						<a href="/photoRemove?bno=${list.bno}">삭제</a>
+						<div class="like">
+							<a href="javascript:likeup(${list.bno},${list.likecnt});" id="LikeBtn">♥</a>
+							<span id="likecnt">x${list.likecnt}</span>
+						</div>
 					</td>
 				</tr>
 			</table>
