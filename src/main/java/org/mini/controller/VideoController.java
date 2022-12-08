@@ -41,24 +41,24 @@ public class VideoController {
 		return "redirect:/video";
 	}
 
-//	@RequestMapping(value = "/videoRemove", method = RequestMethod.GET)
-//	public String videoRemove(VideoVO video) {
-//		vds.remove(video);
-//		return "redirect:/video";
-//	}
-//
-//	@RequestMapping(value = "/videoModify", method = RequestMethod.GET)
-//	public String videoModify(Model model, VideoVO video) {
-//		model.addAttribute("detail", vds.detail(video));
-//		model.addAttribute("folder", vds.video_folder());
-//		return "/video/videoModify";
-//	}
-//
-//	@RequestMapping(value = "/videoModify", method = RequestMethod.POST)
-//	public String videoModify(VideoVO video) {
-//		vds.modify(video);
-//		return "redirect:/video";
-//	}
+	@RequestMapping(value = "/videoRemove", method = RequestMethod.GET)
+	public String videoRemove(VideoVO video) {
+		vds.remove(video);
+		return "redirect:/video";
+	}
+
+	@RequestMapping(value = "/videoModify", method = RequestMethod.GET)
+	public String videoModify(Model model, VideoVO video) {
+		model.addAttribute("detail", vds.detail(video));
+		model.addAttribute("folder", vds.video_folder());
+		return "/video/videoModify";
+	}
+
+	@RequestMapping(value = "/videoModify", method = RequestMethod.POST)
+	public String videoModify(VideoVO video) {
+		vds.modify(video);
+		return "redirect:/video";
+	}
 
 	@RequestMapping(value = "/videoSetting", method = RequestMethod.GET)
 	public String videoSetting(Model model) {

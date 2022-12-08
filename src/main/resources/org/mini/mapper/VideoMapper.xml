@@ -31,6 +31,11 @@
      	 where rownum > (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
     	]]>
 	</select>
+	
+	<select id="detail" resultType="org.mini.model.VideoVO">
+		select * from video where vdno=#{vdno};
+	
+	</select>
 
 	<update id="modify">
 		update video set title=#{title}, content=#{content}, folder=#{folder}

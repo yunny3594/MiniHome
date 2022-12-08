@@ -20,8 +20,9 @@
 				
 			</c:when>
 			<c:otherwise>
+			<input type="hidden" value='${sessionScope.login.userid}' id='userid'>
 				<a href="/Logout"><button>로그아웃</button></a> 사용자 : ${sessionScope.login.userid}님
-			<a href="/memberDetail?userid=${sessionScope.login.userid}"><button>회원정보</button></a>
+			<a href="javascript:void(0);" onclick="memberPOP();"><button>회원정보</button></a>
 			</c:otherwise>
 		</c:choose>
 

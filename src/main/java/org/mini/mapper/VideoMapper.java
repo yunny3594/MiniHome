@@ -12,6 +12,8 @@ public interface VideoMapper {
 
 	public ArrayList<VideoVO> list(CriteriaVO cri);
 
+	public ArrayList<VideoVO> detail(VideoVO video);
+
 	public void modify(VideoVO video);
 
 	public void remove(VideoVO video);

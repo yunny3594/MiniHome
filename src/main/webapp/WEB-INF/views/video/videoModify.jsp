@@ -5,15 +5,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>수정</title>
+<title>동영상 수정</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 
 </head>
 <body>
-	<form action="/videoModify" method="post" id="form">
+동영상 수정
+<c:forEach items="${detail}" var="detail">
+	<form action="/videoModify" method="post">
 		<table border="1">
-		<tr><td>bno:</td><td><input type="text" value="${detail.bno}" name="bno"></td></tr>
+		<tr><td>vdno:</td><td><input type="text" value="${detail.vdno}" name="vdno"></td></tr>
 			<tr>
 				<td>폴더</td>
 				<td><select name="folder">
@@ -33,6 +35,6 @@
 		</table>
 		<input type="submit" value="수정">
 	</form>
-
+</c:forEach>
 </body>
 </html>

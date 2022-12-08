@@ -38,9 +38,5 @@ public class HomeController {
 		return "redirect:/";
 	}
 
-	@RequestMapping(value = "/audio", method = RequestMethod.GET)
-	public String audio() {
-		return "audio";
-	}
 
 }

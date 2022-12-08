@@ -5,14 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>다이어리</title>
+<title>다이어리 수정</title>
 </head>
 <body>
 	다이어리수정
+	<c:forEach items="${detail}" var="detail">
 	<form action="/diaryModify" method="post">
-		<input type="text" value="${detail.dno}" name="dno">
+		<input type="hidden" value="${detail.dno}" name="dno">
 		<textarea rows="20" cols="50" name="content">${detail.content}</textarea>
 		<input type="submit" value="수정">
 	</form>
+	</c:forEach>
 </body>
 </html>

@@ -9,6 +9,14 @@ function SignupPOP() {
 	pop = window.open('/SignUp', 'popup', options);
 }
 
+function memberPOP() {
+	id=$('#userid').val();
+	pop = window.open('/memberDetail?userid='+id, 'popup', options);
+}
+
+
+
+
 function Login() {
 	if ('input') {
 		$('form').submit();
@@ -40,6 +48,6 @@ function Signup() {
 		return false;
 	}
 	$("form").submit();
-	alert(pop);
+
 	window.open.close();
 }

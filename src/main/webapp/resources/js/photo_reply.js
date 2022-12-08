@@ -16,10 +16,10 @@ $(document).ready(function() {
 })
 
 function remove(rno) {
-	console.log(rno);
+
 	$.ajax({
 		type : "delete", // method방식(get,post,put,delete)
-		url : "/photoreplies/remove/" + rno,
+ 		url : "/photoreplies/remove/" + rno,
 		success : function(result) {
 			if (result == "success") {
 				alert("댓글삭제성공");
@@ -62,7 +62,7 @@ function list(bno) {
 function reply_write(bno) {
 	var replyValue = $("#reply" + bno).val();
 	var idValue = $("#idValue").val();
-	if (idValue = null) {
+	if (idValue == '') {
 		alert("로그인 후 시도해주세요.");
 		return false;
 	}
@@ -78,7 +78,7 @@ function reply_write(bno) {
 		contentType : "application/json; charset=utf-8",
 		success : function(result) {
 			if (result == "success") {
-				alert("댓글쓰기성공");
+				return list(bno);
 			}
 		}
 	})

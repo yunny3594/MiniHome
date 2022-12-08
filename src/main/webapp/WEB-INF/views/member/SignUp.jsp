@@ -7,7 +7,6 @@
 <title>회원가입</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js">
 </script>
-<script type="text/javascript" src="/resources/js/signup.js"></script>
 <script type="text/javascript" src="/resources/js/popup.js"></script>
 </head>
 <body>

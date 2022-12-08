@@ -11,6 +11,8 @@ public interface VideoService {
 	public void write(VideoVO video);
 
 	public ArrayList<VideoVO> list(CriteriaVO cri);
+	
+	public ArrayList<VideoVO> detail(VideoVO video);
 
 	public void modify(VideoVO video);
 

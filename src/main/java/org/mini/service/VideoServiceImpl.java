@@ -24,6 +24,9 @@ public class VideoServiceImpl implements VideoService {
 		return vdm.list(cri);
 		
 	}
+	public ArrayList<VideoVO> detail(VideoVO video){
+		return vdm.detail(video);
+	}
 
 	public void modify(VideoVO video) {
 		vdm.modify(video);
