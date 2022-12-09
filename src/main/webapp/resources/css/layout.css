@@ -202,8 +202,8 @@ audio{
 img{
 	
 }
-/* 너비가 1200px 이상일때*/
-@media ( min-width : 1200px ) {
+/* 너비가 1200px 이하일때*/
+@media ( max-width : 1200px ) {
 	* {
 		
 	}

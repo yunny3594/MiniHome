@@ -9,7 +9,7 @@ $(document).ready(function() {
 		})
 	})
 
-	$(".remove").on("click",function() {
+	$(".remove").on("click", function() {
 		var rno = $(this).data("rno");
 		remove(rno);
 	})
@@ -19,7 +19,7 @@ function remove(rno) {
 
 	$.ajax({
 		type : "delete", // method방식(get,post,put,delete)
- 		url : "/photoreplies/remove/" + rno,
+		url : "/photoreplies/remove/" + rno,
 		success : function(result) {
 			if (result == "success") {
 				alert("댓글삭제성공");
@@ -28,35 +28,27 @@ function remove(rno) {
 	})
 }
 
-function modify(reply) {
-	$.ajax({
-		type : "put",
-		url : "/photoreplies/modify",
-		data : JSON.stringify(reply),
-		contentType : "application/json; charset=utf-8",
-		success : function(result) {
-			if (result == "success") {
-				alert("댓글수정성공");
-			}
-		}
-	})
-}
-
 function list(bno) {
-	$.getJSON("/photoreplies/" + bno + ".json", function(data) {
-		var str = "";
-		for (var i = 0; i < data.length; i++) {
+	var idValue = $("#idValue").val();
+	$
+			.getJSON(
+					"/photoreplies/" + bno + ".json",
+					function(data) {
+						var str = "";
+						for (var i = 0; i < data.length; i++) {
 
-			str += "<li id='replycontent" + data[i].rno + "'>" + data[i].id
-					+ " : " + data[i].reply
-			str += "<input type='hidden' value='" + data[i].rno + "'>"
-			str += "<c:if test=${sessionScope.login.id==data[i].id}>"
-			str += "<input class='remove' type='button' value='삭제' data-rno="
-					+ data[i].rno + " data-reply=" + data[i].reply + ">"
-			str += "</c:if> " + "</li>"
-		}
-		$("#replyUL" + bno).html(str);
-	})
+							str += "<li id='replycontent" + data[i].rno + "'>"
+									+ data[i].id + " : " + data[i].reply
+	
+							if (idValue == data[i].id) {
+								str += "       "
+								str += "<input class='remove' type='button' value='삭제' data-rno="
+										+ data[i].rno + ">"
+							}
+							str += "</li>"
+						}
+						$("#replyUL" + bno).html(str);
+					})
 }
 
 function reply_write(bno) {

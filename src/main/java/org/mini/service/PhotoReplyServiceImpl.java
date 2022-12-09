@@ -27,4 +27,8 @@ public class PhotoReplyServiceImpl implements PhotoReplyService {
 	public int remove(int rno) {
 		return prm.remove(rno);
 	}
+
+	public String replyid(int rno) {
+		return prm.replyid(rno);
+	}
 }

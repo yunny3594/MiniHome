@@ -12,4 +12,6 @@ public interface PhotoReplyService {
 	public int modify(PhotoReplyVO reply);
 
 	public int remove(int rno);
+	
+	public String replyid(int rno);
 }

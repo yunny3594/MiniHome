@@ -17,4 +17,6 @@ public interface PhotoReplyMapper {
 	
 	// 댓글 삭제를 구현
 	public int remove(int rno);
+	
+	public String replyid(int rno);
 }

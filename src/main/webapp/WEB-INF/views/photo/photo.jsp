@@ -26,6 +26,7 @@
 </head>
 
 <body>
+<input type="hidden" value="${sessionScope.login.userid}" id="idValue">
 	<%@ include file="/WEB-INF/views/layout1.jsp"%>
 
 	<div class="folder">
@@ -77,7 +78,7 @@
 			</table>
 			<div class="coment"><script>list(${list.bno})</script>
 				<ul id="replyUL${list.bno}"></ul>
-				<input type="hidden" value="${sessionScope.login.userid}" id="idValue">
+				
 				<textarea id="reply${list.bno}"></textarea>
 				<a href="javascript:reply_write(${list.bno})">댓글쓰기</a>
 			</div>

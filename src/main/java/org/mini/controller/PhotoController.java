@@ -6,7 +6,9 @@ import org.mini.model.AttachFileVO;
 import org.mini.model.CriteriaVO;
 import org.mini.model.PhotoFolderVO;
 import org.mini.model.PhotoPageVO;
+import org.mini.model.PhotoReplyVO;
 import org.mini.model.PhotoVO;
+import org.mini.service.PhotoReplyService;
 import org.mini.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,8 @@ public class PhotoController {
 
 	@Autowired
 	PhotoService ps;
+	@Autowired
+	PhotoReplyService prs;
 
 	@RequestMapping(value = "/photo", method = RequestMethod.GET)
 	public String photo(Model model, CriteriaVO cri, PhotoVO photo, PhotoFolderVO folder) {
@@ -34,6 +38,7 @@ public class PhotoController {
 		model.addAttribute("paging", new PhotoPageVO(cri, total));
 		model.addAttribute("attach", ps.attachlist2(photo.getBno()));
 		model.addAttribute("folder", ps.photo_folder());
+
 
 		return "/photo/photo";
 	}

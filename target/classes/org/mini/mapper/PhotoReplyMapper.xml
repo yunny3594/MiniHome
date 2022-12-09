@@ -22,4 +22,8 @@
 		delete from photo_reply where rno=#{rno}
 	</delete>
 	
+	<select id="replyid" resultType="String">
+		select id from photo_reply where rno=#{rno}
+	</select>
+	
 </mapper>
